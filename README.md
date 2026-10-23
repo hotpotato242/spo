@@ -1,1 +1,1 @@
-#predmet sistemska programska oprema
+# spo
