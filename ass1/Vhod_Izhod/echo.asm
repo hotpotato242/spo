@@ -61,23 +61,29 @@ f4_hd	STA	saveA
 	LDA	saveA
 f4_bd1	COMP	#0
 	JEQ	f4_bd2
+	.če je nič smo končali branje
 	STA	tp2_f4		
 	DIV	#10
 	STA	tp_f4		
+	.store zdeljen rezultat
 	MUL	#10
 	RMO	A,X
 	LDA	tp2_f4
+	.od originalnega odšetejes x/y * y
 	SUBR	X,A		
 	LDX	offset
 	STCH	stevil,X
+	.storaš offset v stevilo
 	LDA	#1
 	ADDR	A,X
 	STX	offset
 	LDA	tp_f4
+	.loadaš nazaj zdeljeno število
 	J	f4_bd1
 f4_bd2	LDX	offset
 	LDA	#1
 	SUBR	A,X
+	.izpises od zadaj naprej
 f4_bd3	CLEAR	A
 	LDCH	stevil,X
 	ADD	#48
